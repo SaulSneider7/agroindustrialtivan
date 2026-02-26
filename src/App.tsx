@@ -8,6 +8,7 @@ import {
   faFlask,
   faShieldHalved,
   faChevronRight,
+  faChevronDown,
   faPhone,
   faEnvelope,
   faLocationDot,
@@ -15,7 +16,11 @@ import {
   faDroplet,
   faWind,
   faBars,
-  faXmark
+  faXmark,
+  faBug,
+  faEye,
+  faFlaskVial,
+  faTools
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faInstagram,
@@ -25,6 +30,17 @@ import {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+
+  const productCategories = [
+    'Protección de Cultivos',
+    'Nutrición de Cultivos',
+    'Trampas y Monitoreo',
+    'Atrayentes y Semioquímicos',
+    'Coadyuvantes y Correctores',
+    'Accesorios'
+  ];
 
   useEffect(() => {
     AOS.init({
@@ -54,7 +70,33 @@ export default function App() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium">
             <a href="#inicio" className="hover:text-brand-green transition-colors">Inicio</a>
             <a href="#nosotros" className="hover:text-brand-green transition-colors">Nosotros</a>
-            <a href="#productos" className="hover:text-brand-green transition-colors">Productos</a>
+
+            {/* Products Dropdown */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsProductsDropdownOpen(true)}
+              onMouseLeave={() => setIsProductsDropdownOpen(false)}
+            >
+              <button className="flex items-center gap-1 hover:text-brand-green transition-colors py-8">
+                Productos <FontAwesomeIcon icon={faChevronDown} className={`w-3 h-3 transition-transform duration-300 ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <div className={`absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl border border-brand-green/5 overflow-hidden transition-all duration-300 ${isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                <div className="py-2">
+                  {productCategories.map((cat, idx) => (
+                    <a
+                      key={idx}
+                      href="#productos"
+                      onClick={() => setIsProductsDropdownOpen(false)}
+                      className="block px-6 py-3 text-brand-dark/70 hover:bg-brand-light hover:text-brand-green transition-colors"
+                    >
+                      {cat}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <a href="#sostenibilidad" className="hover:text-brand-green transition-colors">Sostenibilidad</a>
             <a href="#contacto" className="btn-primary py-2 px-6 text-xs">Contactar</a>
           </div>
@@ -70,11 +112,36 @@ export default function App() {
         </div>
 
         {/* Mobile Menu Overlay */}
+
         <div className={`md:hidden fixed inset-0 top-20 bg-white z-40 transition-transform duration-300 ease-in-out shadow-2xl ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex flex-col p-6 gap-6 text-lg font-semibold overflow-y-auto h-full pb-32">
             <a href="#inicio" onClick={closeMenu} className="hover:text-brand-green transition-colors border-b border-brand-green/5 pb-4">Inicio</a>
             <a href="#nosotros" onClick={closeMenu} className="hover:text-brand-green transition-colors border-b border-brand-green/5 pb-4">Nosotros</a>
-            <a href="#productos" onClick={closeMenu} className="hover:text-brand-green transition-colors border-b border-brand-green/5 pb-4">Productos</a>
+
+            {/* Mobile Products Accordion */}
+            <div className="border-b border-brand-green/5 pb-4">
+              <button
+                onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                className="flex items-center justify-between w-full hover:text-brand-green transition-colors"
+              >
+                Productos
+                <FontAwesomeIcon icon={faChevronDown} className={`w-4 h-4 transition-transform duration-300 ${isMobileProductsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <div className={`mt-4 flex flex-col gap-4 pl-4 overflow-hidden transition-all duration-300 ${isMobileProductsOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                {productCategories.map((cat, idx) => (
+                  <a
+                    key={idx}
+                    href="#productos"
+                    onClick={closeMenu}
+                    className="text-base font-medium text-brand-dark/60 hover:text-brand-green transition-colors"
+                  >
+                    {cat}
+                  </a>
+                ))}
+              </div>
+            </div>
+
             <a href="#sostenibilidad" onClick={closeMenu} className="hover:text-brand-green transition-colors border-b border-brand-green/5 pb-4">Sostenibilidad</a>
             <a href="#contacto" onClick={closeMenu} className="btn-primary text-center py-4">Contactar</a>
 
@@ -225,61 +292,79 @@ export default function App() {
       <section id="productos" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-            <h2 className="text-sm font-bold text-brand-green uppercase tracking-[0.2em] mb-4">Nuestros Productos</h2>
-            <h3 className="text-4xl font-bold mb-6">Soluciones Nutricionales de <span className="text-brand-green">Alto Rendimiento</span></h3>
-            <p className="text-brand-dark/70">Fertilizantes diseñados con tecnología de punta para cada etapa de tu cultivo.</p>
+            <h2 className="text-sm font-bold text-brand-green uppercase tracking-[0.2em] mb-4">Catálogo de Soluciones</h2>
+            <h3 className="text-4xl font-bold mb-6">Líneas Especializadas para el <span className="text-brand-green">Éxito Agrícola</span></h3>
+            <p className="text-brand-dark/70">Contamos con una amplia gama de productos diseñados para cubrir cada necesidad técnica del campo moderno.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: 'CreciFácil Trihormonal',
-                desc: 'Potente bioestimulante trihormonal diseñado para maximizar el desarrollo radicular y el crecimiento vigoroso de los cultivos.',
-                icon: <FontAwesomeIcon icon={faSeedling} className="w-8 h-8" />,
-                img: './crecifacil.jpg'
+                title: 'Protección de Cultivos',
+                desc: 'Insecticidas, Fungicidas, Inductores de defensa y Reguladores de crecimiento.',
+                note: 'Categoría esencial para la sanidad vegetal.',
+                icon: faBug,
+                img: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=600'
               },
               {
-                title: 'Trampa de Ala (WingTrap)',
-                desc: 'Sistema especializado de monitoreo y captura masiva para el control biológico de plagas en campo abierto e invernaderos.',
-                icon: <FontAwesomeIcon icon={faShieldHalved} className="w-8 h-8" />,
-                img: './trampa-ala.png'
+                title: 'Nutrición de Cultivos',
+                desc: 'Fertilizantes edáficos, foliares, Microelementos, NPK, Ácidos húmicos y fúlvicos.',
+                note: 'Máxima coherencia técnica para el rendimiento.',
+                icon: faSeedling,
+                img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=600'
               },
               {
-                title: 'Ultra Wett',
-                desc: 'Coadyuvante agrícola de última generación que mejora la dispersión, adherencia y penetración de los agroquímicos en la superficie foliar.',
-                icon: <FontAwesomeIcon icon={faDroplet} className="w-8 h-8" />,
-                img: './ultra-wett.jpg'
+                title: 'Trampas y Monitoreo',
+                desc: 'Trampas para mosca de la fruta, diaphorina, escarabajos (Jackson, McPhail, Funnel, etc).',
+                note: 'Clave para el control biológico efectivo.',
+                icon: faEye,
+                img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=600'
+              },
+              {
+                title: 'Atrayentes y Semioquímicos',
+                desc: 'Trimedlure, Tripslure, Nu-lure, Torula, Bórax y Proteína hidrolizada.',
+                note: 'Lures especializados para manejo de plagas.',
+                icon: faFlaskVial,
+                img: 'https://i.pinimg.com/736x/f3/ac/93/f3ac937d72269d8c33ce5534de1abb61.jpg'
+              },
+              {
+                title: 'Coadyuvantes y Correctores',
+                desc: 'Reguladores de pH, Ablandadores de agua, Detergente y Aceite agrícola.',
+                note: 'Optimización crítica de aplicaciones.',
+                icon: faDroplet,
+                img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=600'
+              },
+              {
+                title: 'Accesorios',
+                desc: 'Laminillas, Ganchos, Canastillas, Carruseles y Repuestos de trampas.',
+                note: 'Complementos físicos indispensables.',
+                icon: faTools,
+                img: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&q=80&w=600'
               }
-            ].map((product, i) => (
+            ].map((category, i) => (
               <div
                 key={i}
                 className="group relative overflow-hidden rounded-3xl bg-brand-light border border-brand-green/5 hover:shadow-2xl transition-all duration-500"
                 data-aos="fade-up"
                 data-aos-delay={i * 100}
               >
-                <div className="h-72 bg-white flex items-center justify-center p-6">
+                <div className="h-48 overflow-hidden">
                   <img
-                    src={product.img}
-                    alt={product.title}
-                    className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                    src={category.img}
+                    alt={category.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
                 </div>
                 <div className="p-8">
                   <div className="bg-brand-green text-brand-lime w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
-                    {product.icon}
+                    <FontAwesomeIcon icon={category.icon} className="w-8 h-8" />
                   </div>
-                  <h4 className="text-xl font-bold mb-3">{product.title}</h4>
-                  <p className="text-brand-dark/60 text-sm mb-6">{product.desc}</p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 rounded-xl border border-brand-green/20 bg-white px-5 py-3 text-sm font-bold text-brand-green shadow-sm transition-all duration-300 hover:bg-brand-green hover:text-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
-                  >
-                    Ver producto
-                    <FontAwesomeIcon
-                      icon={faArrowUpRightFromSquare}
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
+                  <h4 className="text-xl font-bold mb-3">{category.title}</h4>
+                  <p className="text-brand-dark/60 text-sm mb-4 leading-relaxed">{category.desc}</p>
+                  <p className="text-brand-green font-bold text-xs uppercase tracking-wider mb-6">{category.note}</p>
+                  <a href="#" className="flex items-center gap-2 text-brand-green font-bold text-sm group/btn">
+                    Ver línea completa <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                   </a>
                 </div>
               </div>
