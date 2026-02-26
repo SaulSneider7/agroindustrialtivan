@@ -42,14 +42,13 @@ export default function App() {
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-colors duration-300 border-b border-brand-green/10 ${isMenuOpen ? 'bg-white' : 'bg-white/70 backdrop-blur-lg'}`}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="bg-brand-green p-2 rounded-lg group-hover:rotate-12 transition-transform">
-              <FontAwesomeIcon icon={faLeaf} className="text-brand-lime w-6 h-6" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-brand-dark">
-              Agroindustrial <span className="text-brand-green">Tivan</span>
-            </span>
-          </div>
+          <a href="#inicio" className="flex items-center group">
+            <img
+              src="./logo-agroindustrialtivan.png" // ← ajusta tu nombre real
+              alt="Agroindustrial Tivan"
+              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium">
