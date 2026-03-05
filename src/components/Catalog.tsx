@@ -173,7 +173,7 @@ export default function Catalog() {
       {/* Product Modal */}
       <AnimatePresence>
         {selectedProduct && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -185,11 +185,11 @@ export default function Catalog() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-white rounded-[2.5rem] max-w-2xl w-full overflow-hidden shadow-2xl"
+              className="relative bg-white rounded-[2.5rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             >
               <button 
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/40 hover:bg-brand-green hover:text-white transition-all z-10"
+                className="sticky top-4 ml-auto mr-4 w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/40 hover:bg-brand-green hover:text-white transition-all z-10"
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
@@ -206,7 +206,7 @@ export default function Catalog() {
                 <div className="md:w-1/2 p-10 flex flex-col justify-center">
                   <span className="text-brand-green font-bold text-xs uppercase tracking-widest mb-4">Detalle de Producto</span>
                   <h2 className="text-3xl font-bold text-brand-dark mb-6">{selectedProduct.nombre}</h2>
-                  <p className="text-brand-dark/60 leading-relaxed mb-8">
+                  <p className="text-brand-dark/60 leading-relaxed mb-8 text-sm md:text-base">
                     {selectedProduct.descripcion}
                   </p>
                   
