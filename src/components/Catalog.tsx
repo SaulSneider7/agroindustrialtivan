@@ -9,7 +9,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 export default function Catalog() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  
+
   const initialCategory = searchParams.get('categoria');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(initialCategory);
@@ -47,7 +47,7 @@ export default function Catalog() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <div>
-            <button 
+            <button
               onClick={() => navigate('/')}
               className="flex items-center gap-2 text-brand-green font-bold mb-4 hover:gap-3 transition-all"
             >
@@ -59,9 +59,9 @@ export default function Catalog() {
 
           <div className="relative max-w-md w-full">
             <FontAwesomeIcon icon={faSearch} className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-dark/30" />
-            <input 
-              type="text" 
-              placeholder="Buscar productos..." 
+            <input
+              type="text"
+              placeholder="Buscar productos..."
               className="w-full pl-12 pr-6 py-4 rounded-2xl border border-brand-green/10 focus:outline-none focus:ring-2 focus:ring-brand-green/20 transition-all bg-white shadow-sm"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -71,14 +71,14 @@ export default function Catalog() {
 
         {/* Category Filter */}
         <div className="flex flex-wrap gap-2 mb-12">
-          <button 
+          <button
             onClick={() => handleCategoryChange(null)}
             className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${!selectedCategory ? 'bg-brand-green text-white shadow-lg shadow-brand-green/20' : 'bg-white text-brand-dark/60 hover:bg-brand-green/5'}`}
           >
             Todos
           </button>
           {productsData.map((cat, i) => (
-            <button 
+            <button
               key={i}
               onClick={() => handleCategoryChange(cat.categoria)}
               className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${selectedCategory?.toLowerCase() === cat.categoria.toLowerCase() ? 'bg-brand-green text-white shadow-lg shadow-brand-green/20' : 'bg-white text-brand-dark/60 hover:bg-brand-green/5'}`}
@@ -108,17 +108,17 @@ export default function Catalog() {
                         {sub.nombre}
                         <span className="h-px bg-brand-green/20 flex-1"></span>
                       </h3>
-                      
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {sub.productos.map((prod, k) => (
-                          <motion.div 
+                          <motion.div
                             key={k}
                             whileHover={{ y: -5 }}
                             className="bg-white rounded-3xl overflow-hidden shadow-sm border border-brand-green/5 hover:shadow-xl transition-all duration-300 group"
                           >
                             <div className="aspect-[4/3] overflow-hidden relative">
-                              <img 
-                                src={prod.imagen} 
+                              <img
+                                src={prod.imagen}
                                 alt={prod.nombre}
                                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                                 referrerPolicy="no-referrer"
@@ -130,14 +130,14 @@ export default function Catalog() {
                             <div className="p-6">
                               <h4 className="text-brand-dark font-bold text-lg mb-4 line-clamp-1">{prod.nombre}</h4>
                               <div className="flex flex-col gap-2">
-                                <button 
+                                <button
                                   onClick={() => setSelectedProduct(prod)}
                                   className="w-full py-3 rounded-xl bg-brand-green/5 text-brand-green font-bold text-sm hover:bg-brand-green hover:text-white transition-all flex items-center justify-center gap-2"
                                 >
                                   <FontAwesomeIcon icon={faInfoCircle} /> Ver información
                                 </button>
                                 {prod.fichaTecnica && (
-                                  <a 
+                                  <a
                                     href={prod.fichaTecnica}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -159,8 +159,8 @@ export default function Catalog() {
           ) : (
             <div className="text-center py-20 bg-white rounded-[3rem] border border-dashed border-brand-green/20">
               <p className="text-brand-dark/40 font-medium">No se encontraron productos que coincidan con tu búsqueda.</p>
-              <button 
-                onClick={() => {setSearchTerm(''); setSelectedCategory(null);}}
+              <button
+                onClick={() => { setSearchTerm(''); setSelectedCategory(null); }}
                 className="mt-4 text-brand-green font-bold hover:underline"
               >
                 Limpiar filtros
@@ -174,69 +174,93 @@ export default function Catalog() {
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProduct(null)}
               className="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm"
             />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-white rounded-[2.5rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="
+              relative 
+              bg-white 
+              rounded-[2rem]
+              w-[95vw] md:w-[92vw]
+              h-[92vh]
+              shadow-2xl
+              overflow-hidden
+              "
             >
-              <button 
+
+              <button
                 onClick={() => setSelectedProduct(null)}
-                className="sticky top-4 ml-auto mr-4 w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-dark/40 hover:bg-brand-green hover:text-white transition-all z-10"
+                className="absolute top-6 right-6 w-14 h-14 text-xl rounded-full bg-brand-light flex items-center justify-center hover:bg-brand-green hover:text-white"
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
 
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/2 aspect-square md:aspect-auto">
-                  <img 
-                    src={selectedProduct.imagen} 
+              <div className="flex flex-col md:flex-row h-full">
+
+                {/* Imagen */}
+                <div className="md:w-1/2 flex items-center justify-center p-10 bg-brand-light/20">
+                  <img
+                    src={selectedProduct.imagen}
                     alt={selectedProduct.nombre}
-                    className="w-full h-full object-contain"
-                    referrerPolicy="no-referrer"
+                    className="max-h-[75vh] w-auto object-contain"
                   />
                 </div>
-                <div className="md:w-1/2 p-10 flex flex-col justify-center">
-                  <span className="text-brand-green font-bold text-xs uppercase tracking-widest mb-4">Detalle de Producto</span>
-                  <h2 className="text-3xl font-bold text-brand-dark mb-6">{selectedProduct.nombre}</h2>
-                  <p className="text-brand-dark/60 leading-relaxed mb-8 text-sm md:text-base">
+
+                {/* Contenido */}
+                <div className="md:w-1/2 flex flex-col justify-center p-10 overflow-y-auto text-left">
+
+                  <span className="text-brand-green font-bold text-sm md:text-lg uppercase tracking-widest mb-4">
+                    Detalle de Producto
+                  </span>
+
+                  <h2 className="text-4xl md:text-5xl font-bold text-brand-dark mb-8 leading-tight">
+                    {selectedProduct.nombre}
+                  </h2>
+
+                  <p className="text-lg md:text-xl text-brand-dark/80 leading-relaxed mb-10">
                     {selectedProduct.descripcion}
                   </p>
-                  
-                  <div className="space-y-3">
-                    <a 
+
+                  <div className="space-y-5">
+
+                    <a
                       href={`https://wa.me/51988108618?text=Hola, me gustaría recibir más información sobre el producto: ${selectedProduct.nombre}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-4 rounded-2xl bg-brand-green text-white font-bold flex items-center justify-center gap-3 hover:bg-brand-dark transition-all shadow-lg shadow-brand-green/20"
+                      className="w-full py-5 text-lg md:text-xl rounded-2xl bg-brand-green text-white font-bold flex items-center justify-center gap-3 hover:bg-brand-dark"
                     >
                       Solicitar Cotización
                     </a>
+
                     {selectedProduct.fichaTecnica && (
-                      <a 
+                      <a
                         href={selectedProduct.fichaTecnica}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-4 rounded-2xl border-2 border-brand-green text-brand-green font-bold flex items-center justify-center gap-3 hover:bg-brand-green hover:text-white transition-all"
+                        className="w-full py-5 text-lg md:text-xl rounded-2xl border-2 border-brand-green text-brand-green font-bold flex items-center justify-center gap-3 hover:bg-brand-green hover:text-white"
                       >
                         <FontAwesomeIcon icon={faDownload} /> Descargar Ficha Técnica
                       </a>
                     )}
-                    <button 
+
+                    <button
                       onClick={() => setSelectedProduct(null)}
-                      className="w-full py-4 rounded-2xl border border-brand-green/10 text-brand-dark/40 font-bold hover:bg-brand-light transition-all"
+                      className="w-full py-5 text-lg md:text-xl rounded-2xl border border-brand-green/20 text-brand-dark hover:bg-brand-light"
                     >
                       Cerrar
                     </button>
+
                   </div>
                 </div>
+
               </div>
             </motion.div>
           </div>
