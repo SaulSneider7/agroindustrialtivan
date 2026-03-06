@@ -18,14 +18,14 @@ export default function ProductsSection() {
       desc: 'Insecticidas, Fungicidas, Inductores de defensa y Reguladores de crecimiento.',
       note: 'Sanidad vegetal integral.',
       icon: faBug,
-      img: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=600'
+      img: './eco_oil.jpg'
     },
     {
       title: 'Nutrición de cultivos',
       desc: 'Fertilizantes edáficos, foliares, Bioestimulantes, Hormonas y Enraizantes.',
       note: 'Máximo rendimiento y vigor.',
       icon: faSeedling,
-      img: 'https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&q=80&w=600',
+      img: './ecopower_micro_mix.jpg',
       subs: ['Fertilizantes', 'Bioestimulantes-hormonas-enraizantes']
     },
     {
@@ -33,7 +33,7 @@ export default function ProductsSection() {
       desc: 'Trampas para mosca de la fruta y sistemas de monitoreo especializado.',
       note: 'Control etológico avanzado.',
       icon: faEye,
-      img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=600',
+      img: './trampa_multilure.jpg',
       subs: ['Mosca de la fruta', 'Otras trampas para monitoreo']
     },
     {
@@ -41,28 +41,28 @@ export default function ProductsSection() {
       desc: 'Lures, Proteínas hidrolizadas y atrayentes específicos para plagas.',
       note: 'Tecnología de atracción precisa.',
       icon: faFlaskVial,
-      img: 'https://images.unsplash.com/photo-1532187863486-abf9d3a36e98?auto=format&fit=crop&q=80&w=600'
+      img: './fruit_fly_lure.jpg'
     },
     {
       title: 'Pegamentos Entomológicos',
       desc: 'Adhesivos especializados para trampas y barreras físicas.',
       note: 'Captura mecánica eficiente.',
       icon: faShieldHalved,
-      img: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800'
+      img: './pegamento_better.jpg'
     },
     {
       title: 'Coadyuvantes y correctores',
       desc: 'Reguladores de pH, Ablandadores de agua y Optimizadores de aplicación.',
       note: 'Eficiencia en cada gota.',
       icon: faDroplet,
-      img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=600'
+      img: './ultra_wett.jpg'
     },
     {
       title: 'Accesorios',
       desc: 'Laminillas, Ganchos, Canastillas y repuestos para sistemas de monitoreo.',
       note: 'Complementos técnicos.',
       icon: faTools,
-      img: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&q=80&w=600'
+      img: 'laminilla_para_trampa_jackson.jpg'
     }
   ];
 
@@ -87,7 +87,7 @@ export default function ProductsSection() {
                 <img 
                   src={category.img} 
                   alt={category.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </div>

@@ -16,21 +16,21 @@ export default function FeaturedProducts() {
       category: 'Monitoreo',
       desc: 'Sistema líder en captura masiva para el control biológico de plagas en cultivos críticos.',
       icon: faShieldHalved,
-      img: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800'
+      img: './trampa_ala.jpg'
     },
     {
       title: 'CreciFácil Trihormonal',
       category: 'Bioestimulante',
       desc: 'Maximiza el desarrollo radicular y el crecimiento vigoroso con tecnología trihormonal avanzada.',
       icon: faSeedling,
-      img: 'https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&q=80&w=800'
+      img: './crecifacil_trihormonal.jpg'
     },
     {
       title: 'Ultra Wett',
       category: 'Coadyuvante',
       desc: 'Optimiza cada gota de tu aplicación mejorando la adherencia y penetración foliar.',
       icon: faDroplet,
-      img: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800'
+      img: './ultra_wett.jpg'
     }
   ];
 
@@ -65,7 +65,7 @@ export default function FeaturedProducts() {
                 <img 
                   src={product.img} 
                   alt={product.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-6 left-6">
