@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Catalog from './components/Catalog';
+import ProductDetail from './components/ProductDetail';
 import Hero from './components/home/Hero';
 import Stats from './components/home/Stats';
 import FeaturedProducts from './components/home/FeaturedProducts';
@@ -78,6 +79,7 @@ export default function App() {
             </>
           } />
           <Route path="/catalogo" element={<Catalog />} />
+          <Route path="/producto/:productSlug" element={<ProductDetail />} />
         </Routes>
       </main>
 

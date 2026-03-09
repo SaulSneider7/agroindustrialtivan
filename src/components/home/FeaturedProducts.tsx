@@ -34,6 +34,8 @@ export default function FeaturedProducts() {
     }
   ];
 
+  const slugify = (name: string) => name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
+
   return (
     <section className="py-24 bg-brand-light relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -57,7 +59,7 @@ export default function FeaturedProducts() {
           {products.map((product, i) => (
             <div 
               key={i} 
-              className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-brand-green/5"
+              className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-brand-green/5 flex flex-col"
               data-aos="fade-up"
               data-aos-delay={i * 150}
             >
@@ -74,17 +76,20 @@ export default function FeaturedProducts() {
                   </span>
                 </div>
               </div>
-              <div className="p-10">
+              <div className="p-10 flex flex-col flex-1">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-brand-light rounded-2xl flex items-center justify-center text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors duration-300">
                     <FontAwesomeIcon icon={product.icon} className="text-xl" />
                   </div>
                   <h3 className="text-xl font-bold text-brand-dark group-hover:text-brand-green transition-colors">{product.title}</h3>
                 </div>
-                <p className="text-brand-dark/60 text-sm leading-relaxed mb-8">{product.desc}</p>
-                <a href="#contacto" className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-brand-dark text-white font-bold text-sm hover:bg-brand-green transition-all shadow-lg hover:shadow-brand-green/20">
-                  Solicitar Cotización <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
-                </a>
+                <p className="text-brand-dark/60 text-sm leading-relaxed mb-8 flex-1">{product.desc}</p>
+                <Link 
+                  to={`/producto/${slugify(product.title)}`}
+                  className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-brand-dark text-white font-bold text-sm hover:bg-brand-green transition-all shadow-lg hover:shadow-brand-green/20"
+                >
+                  Ver Detalles <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
+                </Link>
               </div>
             </div>
           ))}

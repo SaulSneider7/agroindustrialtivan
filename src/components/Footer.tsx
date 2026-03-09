@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faLeaf, 
-  faPhone, 
-  faEnvelope, 
+import {
+  faPhone,
+  faEnvelope,
   faLocationDot
 } from '@fortawesome/free-solid-svg-icons';
-import { 
-  faInstagram, 
-  faFacebook, 
+import {
+  faInstagram,
+  faFacebook,
   faLinkedinIn,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
@@ -19,11 +18,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="bg-brand-green p-2 rounded-lg">
-                <FontAwesomeIcon icon={faLeaf} className="text-brand-lime w-6 h-6" />
-              </div>
-              <span className="text-2xl font-bold tracking-tight">Agroindustrial <span className="text-brand-lime">Tivan</span></span>
+            <div className="mb-6">
+              <img
+                src="/logo-agroindustrialtivan.png"
+                alt="Agroindustrial Tivan"
+                className="h-18 w-auto object-contain bg-white p-2 rounded-lg"
+              />
             </div>
             <p className="text-white/60 max-w-md leading-relaxed mb-8">
               Líderes en soluciones agrícolas sostenibles. Transformamos el campo con tecnología y pasión por la tierra.
@@ -56,12 +56,12 @@ export default function Footer() {
             <h4 className="font-bold mb-6 text-brand-lime uppercase tracking-widest text-xs">Contacto</h4>
             <ul className="space-y-4 text-white/60 text-sm">
               <li className="flex items-start gap-3">
-                <FontAwesomeIcon icon={faLocationDot} className="w-4 h-4 text-brand-lime shrink-0 mt-1" /> 
+                <FontAwesomeIcon icon={faLocationDot} className="w-4 h-4 text-brand-lime shrink-0 mt-1" />
                 Psje. Las Orquideas Mz. Lt 1 – Puente Piedra – Perú
               </li>
               <li className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
-                  <FontAwesomeIcon icon={faPhone} className="w-4 h-4 text-brand-lime" /> 
+                  <FontAwesomeIcon icon={faPhone} className="w-4 h-4 text-brand-lime" />
                   +51 988 108 618
                 </div>
                 <div className="flex items-center gap-3 ml-7">
@@ -70,7 +70,7 @@ export default function Footer() {
               </li>
               <li className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
-                  <FontAwesomeIcon icon={faEnvelope} className="w-4 h-4 text-brand-lime" /> 
+                  <FontAwesomeIcon icon={faEnvelope} className="w-4 h-4 text-brand-lime" />
                   ventas@agroindustrialtivan.com
                 </div>
                 <div className="flex items-center gap-3 ml-7">
@@ -81,7 +81,21 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/40">
-          <p>© {new Date().getFullYear()} Agroindustrial Tivan S.A. Todos los derechos reservados.</p>
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-center md:text-left">
+            <p>© {new Date().getFullYear()} Agroindustrial Tivan S.A. Todos los derechos reservados.</p>
+
+            <p className="text-white/40">
+              Diseñado y desarrollado por{" "}
+              <a
+                href="https://tu-sitioweb.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-lime hover:underline font-semibold"
+              >
+                Tu-Sitioweb
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
