@@ -40,7 +40,7 @@ export default function Navbar({ productCategories }: NavbarProps) {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 border-b border-brand-green/10 ${isMenuOpen ? 'bg-white' : 'bg-white/70 backdrop-blur-lg'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 border-b border-brand-green/10 ${isMenuOpen ? 'bg-white' : 'bg-white backdrop-blur-lg'}`}>
       {/* Top Bar */}
       <div className="hidden lg:block bg-brand-dark text-white py-2 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-semibold uppercase tracking-wider">
@@ -113,7 +113,7 @@ export default function Navbar({ productCategories }: NavbarProps) {
           <img
             src="/logo-agroindustrialtivan.png"
             alt="Agroindustrial Tivan"
-            className="h-10 lg:h-12 w-auto object-contain"
+            className="h-16 lg:h-16 w-auto object-contain"
           />
         </Link>
 

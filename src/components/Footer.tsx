@@ -57,7 +57,7 @@ export default function Footer() {
             <ul className="space-y-4 text-white/60 text-sm">
               <li className="flex items-start gap-3">
                 <FontAwesomeIcon icon={faLocationDot} className="w-4 h-4 text-brand-lime shrink-0 mt-1" />
-                Psje. Las Orquideas Mz. Lt 1 – Puente Piedra – Perú
+                Psje. Las Orquideas Mz. L Lt 1 – Puente Piedra – Perú
               </li>
               <li className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">

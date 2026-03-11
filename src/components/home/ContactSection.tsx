@@ -27,7 +27,7 @@ export default function ContactSection() {
     {
       title: 'Ubicación',
       value: 'Puente Piedra, Perú',
-      desc: 'Psje. Las Orquideas Mz. Lt 1 – Puente Piedra – Perú',
+      desc: 'Psje. Las Orquideas Mz. M Lt 1 – Puente Piedra – Perú',
       icon: <FontAwesomeIcon icon={faLocationDot} className="w-8 h-8" />,
       action: 'Ver en mapa',
       link: 'https://maps.google.com/?q=Psje.+Las+Orquideas+Mz.+Lt+1+Puente+Piedra+Peru'

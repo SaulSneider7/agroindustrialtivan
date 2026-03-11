@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faBug, 
-  faSeedling, 
-  faEye, 
-  faFlaskVial, 
-  faShieldHalved, 
-  faDroplet, 
+import {
+  faBug,
+  faSeedling,
+  faEye,
+  faFlaskVial,
+  faShieldHalved,
+  faDroplet,
   faTools,
   faArrowUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons';
@@ -77,44 +77,65 @@ export default function ProductsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, i) => (
-            <div 
-              key={i} 
-              className="group relative overflow-hidden rounded-3xl bg-brand-light border border-brand-green/5 hover:shadow-2xl transition-all duration-500"
+            <div
+              key={i}
+              className="group relative overflow-hidden rounded-3xl bg-white border border-brand-green/10 shadow-lg hover:shadow-2xl transition-all duration-500"
               data-aos="fade-up"
               data-aos-delay={i * 100}
             >
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={category.img} 
-                  alt={category.title} 
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+
+              {/* Imagen más grande */}
+              <div className="h-64 flex items-center justify-center overflow-hidden bg-white">
+                <img
+                  src={category.img}
+                  alt={category.title}
+                  className="max-h-full max-w-[90%] object-contain group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </div>
+
               <div className="p-8">
+
                 <div className="bg-brand-green text-brand-lime w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
                   <FontAwesomeIcon icon={category.icon} className="w-8 h-8" />
                 </div>
-                <h4 className="text-xl font-bold mb-3">{category.title}</h4>
-                <p className="text-brand-dark/60 text-sm mb-4 leading-relaxed">{category.desc}</p>
-                
+
+                <h4 className="text-xl font-bold mb-3">
+                  {category.title}
+                </h4>
+
+                <p className="text-brand-dark/60 text-sm mb-4 leading-relaxed">
+                  {category.desc}
+                </p>
+
                 {category.subs && (
                   <div className="mb-4 flex flex-wrap gap-2">
                     {category.subs.map((sub, sIdx) => (
-                      <span key={sIdx} className="text-[10px] bg-brand-green/10 text-brand-green px-2 py-1 rounded-md font-bold uppercase tracking-tighter">
+                      <span
+                        key={sIdx}
+                        className="text-[10px] bg-brand-green/10 text-brand-green px-2 py-1 rounded-md font-bold uppercase tracking-tighter"
+                      >
                         {sub}
                       </span>
                     ))}
                   </div>
                 )}
 
-                <p className="text-brand-green font-bold text-xs uppercase tracking-wider mb-6">{category.note}</p>
-                <Link 
+                <p className="text-brand-green font-bold text-xs uppercase tracking-wider mb-6">
+                  {category.note}
+                </p>
+
+                <Link
                   to={`/catalogo?categoria=${encodeURIComponent(category.title)}`}
                   className="flex items-center gap-2 text-brand-green font-bold text-sm group/btn"
                 >
-                  Ver línea completa <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  Ver línea completa
+                  <FontAwesomeIcon
+                    icon={faArrowUpRightFromSquare}
+                    className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
+                  />
                 </Link>
+
               </div>
             </div>
           ))}
