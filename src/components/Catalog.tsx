@@ -43,7 +43,7 @@ export default function Catalog() {
 
   return (
     <div className="min-h-screen bg-brand-light pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl xl:max-w-[1500px] 2xl:max-w-[1700px] mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <div>

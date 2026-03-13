@@ -8,7 +8,7 @@ export default function Stats() {
 
   return (
     <section className="py-20 bg-brand-green text-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, i) => (
             <div key={i} data-aos="fade-up" data-aos-delay={i * 100}>

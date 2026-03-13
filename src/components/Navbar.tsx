@@ -43,7 +43,7 @@ export default function Navbar({ productCategories }: NavbarProps) {
     <nav className={`fixed w-full z-50 transition-all duration-300 border-b border-brand-green/10 ${isMenuOpen ? 'bg-white' : 'bg-white backdrop-blur-lg'}`}>
       {/* Top Bar */}
       <div className="hidden lg:block bg-brand-dark text-white py-2 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-semibold uppercase tracking-wider">
+        <div className="max-w-[1440px] mx-auto px-6 flex justify-between items-center text-xs font-semibold uppercase tracking-wider">
 
           {/* Contacto */}
           <div className="flex items-center gap-8">
@@ -104,7 +104,7 @@ export default function Navbar({ productCategories }: NavbarProps) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-12 h-20 flex items-center justify-between">
         <Link
           to="/"
           className="flex items-center cursor-pointer"

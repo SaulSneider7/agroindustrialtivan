@@ -67,15 +67,30 @@ export default function ProductsSection() {
   ];
 
   return (
-    <section id="productos" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-          <h2 className="text-sm font-bold text-brand-green uppercase tracking-[0.2em] mb-4">Catálogo de Soluciones</h2>
-          <h3 className="text-4xl font-bold mb-6">Líneas Especializadas para el <span className="text-brand-green">Éxito Agrícola</span></h3>
-          <p className="text-brand-dark/70">Contamos con una amplia gama de productos diseñados para cubrir cada necesidad técnica del campo moderno.</p>
+    <section id="productos" className="py-28 bg-white">
+      <div className="max-w-[1440px] mx-auto px-6">
+
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+
+          <h2 className="text-base font-bold text-brand-green uppercase tracking-[0.25em] mb-6">
+            Catálogo de Soluciones
+          </h2>
+
+          <h3 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+            Líneas Especializadas para el
+            <span className="text-brand-green"> Éxito Agrícola</span>
+          </h3>
+
+          <p className="text-lg md:text-xl text-brand-dark/70 leading-relaxed">
+            Contamos con una amplia gama de productos diseñados para cubrir cada necesidad técnica del campo moderno.
+          </p>
+
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
           {categories.map((category, i) => (
             <div
               key={i}
@@ -84,8 +99,8 @@ export default function ProductsSection() {
               data-aos-delay={i * 100}
             >
 
-              {/* Imagen más grande */}
-              <div className="h-64 flex items-center justify-center overflow-hidden bg-white">
+              {/* Imagen */}
+              <div className="h-72 flex items-center justify-center overflow-hidden bg-white">
                 <img
                   src={category.img}
                   alt={category.title}
@@ -94,26 +109,30 @@ export default function ProductsSection() {
                 />
               </div>
 
-              <div className="p-8">
+              <div className="p-10">
 
-                <div className="bg-brand-green text-brand-lime w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
-                  <FontAwesomeIcon icon={category.icon} className="w-8 h-8" />
+                {/* Icono */}
+                <div className="bg-brand-green text-brand-lime w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform">
+                  <FontAwesomeIcon icon={category.icon} className="w-9 h-9" />
                 </div>
 
-                <h4 className="text-xl font-bold mb-3">
+                {/* Título */}
+                <h4 className="text-2xl font-bold mb-4 text-brand-dark">
                   {category.title}
                 </h4>
 
-                <p className="text-brand-dark/60 text-sm mb-4 leading-relaxed">
+                {/* Descripción */}
+                <p className="text-base text-brand-dark/70 mb-6 leading-relaxed">
                   {category.desc}
                 </p>
 
+                {/* Subcategorías */}
                 {category.subs && (
-                  <div className="mb-4 flex flex-wrap gap-2">
+                  <div className="mb-6 flex flex-wrap gap-2">
                     {category.subs.map((sub, sIdx) => (
                       <span
                         key={sIdx}
-                        className="text-[10px] bg-brand-green/10 text-brand-green px-2 py-1 rounded-md font-bold uppercase tracking-tighter"
+                        className="text-xs bg-brand-green/10 text-brand-green px-3 py-1.5 rounded-md font-bold uppercase tracking-wide"
                       >
                         {sub}
                       </span>
@@ -121,13 +140,15 @@ export default function ProductsSection() {
                   </div>
                 )}
 
-                <p className="text-brand-green font-bold text-xs uppercase tracking-wider mb-6">
+                {/* Nota */}
+                <p className="text-brand-green font-bold text-sm uppercase tracking-wider mb-6">
                   {category.note}
                 </p>
 
+                {/* Botón */}
                 <Link
                   to={`/catalogo?categoria=${encodeURIComponent(category.title)}`}
-                  className="flex items-center gap-2 text-brand-green font-bold text-sm group/btn"
+                  className="flex items-center gap-3 text-brand-green font-bold text-base group/btn"
                 >
                   Ver línea completa
                   <FontAwesomeIcon
@@ -139,6 +160,7 @@ export default function ProductsSection() {
               </div>
             </div>
           ))}
+
         </div>
       </div>
     </section>
