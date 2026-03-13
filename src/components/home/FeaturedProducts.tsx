@@ -16,21 +16,21 @@ export default function FeaturedProducts() {
       category: 'Monitoreo',
       desc: 'Sistema líder en captura masiva para el control biológico de plagas en cultivos críticos.',
       icon: faShieldHalved,
-      img: './trampa_ala.jpg'
+      img: './trampa_ala.png'
     },
     {
       title: 'CreciFácil Trihormonal',
       category: 'Bioestimulante',
       desc: 'Maximiza el desarrollo radicular y el crecimiento vigoroso con tecnología trihormonal avanzada.',
       icon: faSeedling,
-      img: './crecifacil_trihormonal.jpg'
+      img: './crecifacil_trihormonal.png'
     },
     {
       title: 'Ultra Wett',
       category: 'Coadyuvante',
       desc: 'Optimiza cada gota de tu aplicación mejorando la adherencia y penetración foliar.',
       icon: faDroplet,
-      img: './ultra_wett.jpg'
+      img: './ultra_wett.png'
     }
   ];
 

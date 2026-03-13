@@ -18,14 +18,14 @@ export default function ProductsSection() {
       desc: 'Insecticidas, Fungicidas, Inductores de defensa y Reguladores de crecimiento.',
       note: 'Sanidad vegetal integral.',
       icon: faBug,
-      img: './eco_oil.jpg'
+      img: './eco_oil.png'
     },
     {
       title: 'Nutrición de cultivos',
       desc: 'Fertilizantes edáficos, foliares, Bioestimulantes, Hormonas y Enraizantes.',
       note: 'Máximo rendimiento y vigor.',
       icon: faSeedling,
-      img: './ecopower_micro_mix.jpg',
+      img: './ecopower_micro_mix.png',
       subs: ['Fertilizantes', 'Bioestimulantes-hormonas-enraizantes']
     },
     {
@@ -33,7 +33,7 @@ export default function ProductsSection() {
       desc: 'Trampas para mosca de la fruta y sistemas de monitoreo especializado.',
       note: 'Control etológico avanzado.',
       icon: faEye,
-      img: './trampa_multilure.jpg',
+      img: './trampa_multilure.png',
       subs: ['Mosca de la fruta', 'Otras trampas para monitoreo']
     },
     {
@@ -41,28 +41,28 @@ export default function ProductsSection() {
       desc: 'Lures, Proteínas hidrolizadas y atrayentes específicos para plagas.',
       note: 'Tecnología de atracción precisa.',
       icon: faFlaskVial,
-      img: './fruit_fly_lure.jpg'
+      img: './fruit_fly_lure.png'
     },
     {
       title: 'Pegamentos Entomológicos',
       desc: 'Adhesivos especializados para trampas y barreras físicas.',
       note: 'Captura mecánica eficiente.',
       icon: faShieldHalved,
-      img: './pegamento_better.jpg'
+      img: './pegamento_better.png'
     },
     {
       title: 'Coadyuvantes y correctores',
       desc: 'Reguladores de pH, Ablandadores de agua y Optimizadores de aplicación.',
       note: 'Eficiencia en cada gota.',
       icon: faDroplet,
-      img: './ultra_wett.jpg'
+      img: './ultra_wett.png'
     },
     {
       title: 'Accesorios',
       desc: 'Laminillas, Ganchos, Canastillas y repuestos para sistemas de monitoreo.',
       note: 'Complementos técnicos.',
       icon: faTools,
-      img: 'laminilla_para_trampa_jackson.jpg'
+      img: 'laminilla_para_trampa_jackson.png'
     }
   ];
 
