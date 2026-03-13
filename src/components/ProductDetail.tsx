@@ -136,7 +136,7 @@ export default function ProductDetail() {
               <img 
                 src={product.imagen} 
                 alt={product.nombre} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>

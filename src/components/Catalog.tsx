@@ -120,7 +120,7 @@ export default function Catalog() {
                               <img 
                                 src={prod.imagen} 
                                 alt={prod.nombre}
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                                 referrerPolicy="no-referrer"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
