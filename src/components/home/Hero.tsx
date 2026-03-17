@@ -1,111 +1,257 @@
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faSeedling,
-  faChevronRight
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faInstagram,
-  faFacebook,
-  faLinkedinIn,
-  faYoutube
-} from '@fortawesome/free-brands-svg-icons';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
 
-export default function Hero() {
+import { useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeXmark, faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
+
+export default function HeroSlider() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleAudio = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-brand-dark pt-20">
-      {/* Hero Socials Sidebar */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20 hidden xl:flex flex-col gap-10 items-center">
-        <div className="w-px h-24 bg-gradient-to-t from-brand-lime to-transparent" />
+    <section className="w-full h-screen">
 
-        <a href="https://www.facebook.com/Agroindustrialtivan" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-lime transition-all hover:scale-125">
-          <FontAwesomeIcon icon={faFacebook} className="text-3xl" />
-        </a>
+      <Swiper
+        modules={[Autoplay, Pagination, EffectFade, Navigation]}
+        effect="fade"
+        autoplay={{ delay: 10000, disableOnInteraction: false }}
+        loop
+        pagination={{ clickable: true }}
+        navigation
+        className="h-full"
+      >
 
-        <a href="https://www.instagram.com/agroindustrialtivan/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-lime transition-all hover:scale-125">
-          <FontAwesomeIcon icon={faInstagram} className="text-3xl" />
-        </a>
+        {/* 🎬 SLIDE 1 - VIDEO */}
+        <SwiperSlide>
+          <div className="relative w-full h-screen overflow-hidden bg-black">
 
-        <a href="https://www.linkedin.com/in/agroindustrialtivan" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-lime transition-all hover:scale-125">
-          <FontAwesomeIcon icon={faLinkedinIn} className="text-3xl" />
-        </a>
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute w-full h-full object-cover"
+            >
+              <source src="/video_hero.mp4" type="video/mp4" />
+            </video>
 
-        <a href="http://www.youtube.com/@AGROTIVAN" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-lime transition-all hover:scale-125">
-          <FontAwesomeIcon icon={faYoutube} className="text-3xl" />
-        </a>
+            <div className="absolute inset-0 bg-black/30" />
 
-        <div className="w-px h-24 bg-gradient-to-b from-brand-lime to-transparent" />
-      </div>
-
-      {/* Static Background */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=2000"
-          alt="Campo agrícola"
-          className="w-full h-full object-cover brightness-[0.2]"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/60 to-transparent" />
-      </div>
-
-      <div className="relative z-10 max-w-[1440px] mx-auto px-8 lg:px-12 w-full grid lg:grid-cols-2 gap-16 items-center">
-        <div data-aos="fade-right">
-          <div className="inline-flex items-center gap-2 bg-brand-lime/20 backdrop-blur-sm border border-brand-lime/30 px-4 py-2 rounded-full mb-6">
-            <FontAwesomeIcon icon={faSeedling} className="w-4 h-4 text-brand-lime" />
-            <span className="text-brand-lime text-xs font-bold uppercase tracking-widest">Innovación Agrícola</span>
+            {/* BOTÓN AUDIO */}
+            <button
+              onClick={toggleAudio}
+              className="absolute bottom-32 right-6 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:scale-110"
+            >
+              <FontAwesomeIcon icon={isMuted ? faVolumeXmark : faVolumeHigh} />
+            </button>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6">
-            Nutriendo el <span className="text-brand-lime">Futuro</span> de tus Cultivos
-          </h1>
-          <p className="text-lg text-white/80 mb-10 max-w-lg leading-relaxed">
-            En Agroindustrial Tivan, transformamos la agricultura con fertilizantes de alta calidad y soluciones sostenibles diseñadas para maximizar tu productividad.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link to="/catalogo" className="bg-brand-green hover:bg-brand-green/90 text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all hover:scale-105 group">
-              Ver Catálogo <FontAwesomeIcon icon={faChevronRight} className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link to="/#nosotros" className="px-8 py-3 rounded-full font-semibold text-white border border-white/30 hover:bg-white/10 transition-all">
-              Nuestra Historia
-            </Link>
-          </div>
-        </div>
+        </SwiperSlide>
 
-        {/* 3 Product Images Layout */}
-        <div className="relative grid grid-cols-2 gap-4" data-aos="fade-left">
-          <div className="space-y-4">
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 transform hover:scale-105 transition-transform duration-500">
+        {/* 🧪 SLIDE PRODUCTO 1 */}
+        <SwiperSlide>
+          <div className="relative h-screen flex items-center overflow-hidden">
+
+            {/* FONDO */}
+            <div className="absolute inset-0">
               <img
-                src="./hero_3.png"
-                alt="Producto 1"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
+                src="/fondo.jpeg"
+                className="w-full h-full object-cover md:object-cover object-center"
               />
+              <div className="absolute inset-0 bg-black/60" />
             </div>
-            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/10 transform translate-x-8 hover:scale-105 transition-transform duration-500">
-              <img
-                src="./hero_2.png"
-                alt="Producto 2"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          </div>
-          <div className="flex items-center">
-            <div className="aspect-[3/4] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 transform -translate-y-8 hover:scale-105 transition-transform duration-500">
-              <img
-                src="./trampa_hero.jpeg"
-                alt="Producto 3"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          </div>
 
-          {/* Decorative elements */}
-          <div className="absolute -top-12 -right-12 w-64 h-64 bg-brand-lime/10 rounded-full blur-3xl -z-10 animate-pulse" />
-          <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-brand-green/10 rounded-full blur-3xl -z-10 animate-pulse" />
-        </div>
-      </div>
+            {/* CONTENIDO */}
+            <div className="
+              relative z-10 
+              flex flex-col md:grid md:grid-cols-2 
+              items-center 
+              gap-8 md:gap-12 
+              w-full max-w-7xl mx-auto px-6 md:px-10
+            ">
+
+              {/* IMAGEN */}
+              <div className="flex justify-center w-full order-1 md:order-none">
+                <img
+                  src="/alga_force.png"
+                  className="
+                    w-[220px] sm:w-[280px] md:w-[420px] lg:w-[500px]
+                    object-contain
+                    drop-shadow-2xl
+                    animate-float3d
+                  "
+                />
+              </div>
+
+              {/* TEXTO */}
+              <div className="
+                text-white 
+                text-center md:text-left 
+                max-w-xl
+              ">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                  ALGA FORCE
+                </h2>
+
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4">
+                  Impulsa el crecimiento de tus cultivos
+                </h3>
+
+                <p className="text-sm sm:text-base md:text-lg text-white/80 mb-4 md:mb-6">
+                  Bioestimulante natural que acelera el desarrollo, mejora el enraizamiento y aumenta la productividad en cada etapa del cultivo.
+                </p>
+
+                <ul className="text-white/70 space-y-1 md:space-y-2 text-sm md:text-base">
+                  <li>✔ Estimula brotación, floración y cuajado</li>
+                  <li>✔ Reduce el estrés por clima o trasplante</li>
+                  <li>✔ Potencia la resistencia a enfermedades</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </SwiperSlide>
+
+        {/* 🧪 SLIDE PRODUCTO 2 */}
+        <SwiperSlide>
+          <div className="relative h-screen flex items-center overflow-hidden">
+
+            {/* FONDO */}
+            <div className="absolute inset-0">
+              <img
+                src="/fondo.jpeg"
+                className="w-full h-full object-cover md:object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-black/60" />
+            </div>
+
+            {/* CONTENIDO */}
+            <div className="
+              relative z-10 
+              flex flex-col md:grid md:grid-cols-2 
+              items-center 
+              gap-8 md:gap-12 
+              w-full max-w-7xl mx-auto px-6 md:px-10
+            ">
+
+              {/* IMAGEN */}
+              <div className="flex justify-center w-full order-1 md:order-none">
+                <img
+                  src="/rollo_hero.png"
+                  className="
+                    w-[220px] sm:w-[280px] md:w-[420px] lg:w-[500px]
+                    object-contain
+                    drop-shadow-2xl
+                    animate-float3d
+                  "
+                />
+              </div>
+
+              {/* TEXTO */}
+              <div className="
+                  text-white 
+                  text-center md:text-left 
+                  max-w-xl
+                ">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                  ROLLO ADHESIVO NOVITRAP
+                </h2>
+
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4">
+                  Captura eficaz de insectos voladores
+                </h3>
+
+                <p className="text-sm sm:text-base md:text-lg text-white/80 mb-4 md:mb-6">
+                  Trampa cromática de alta eficiencia para el control físico de plagas en grandes plantaciones.
+                </p>
+
+                <ul className="text-white/70 space-y-1 md:space-y-2 text-sm md:text-base">
+                  <li>✔ Atracción por color altamente efectiva</li>
+                  <li>✔ Recubrimiento adhesivo doble cara</li>
+                  <li>✔ Ideal para cultivos intensivos</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </SwiperSlide>
+
+        {/* 🧪 SLIDE PRODUCTO 3 */}
+        <SwiperSlide>
+          <div className="relative h-screen flex items-center overflow-hidden">
+
+            {/* FONDO */}
+            <div className="absolute inset-0">
+              <img
+                src="/fondo.jpeg"
+                className="w-full h-full object-cover md:object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-black/60" />
+            </div>
+
+            {/* CONTENIDO */}
+            <div className="
+              relative z-10 
+              flex flex-col md:grid md:grid-cols-2 
+              items-center 
+              gap-8 md:gap-12 
+              w-full max-w-7xl mx-auto px-6 md:px-10
+            ">
+
+              {/* IMAGEN */}
+              <div className="flex justify-center w-full order-1 md:order-none">
+                <img
+                  src="/trampa_bucket.png"
+                  className="
+                    w-[220px] sm:w-[280px] md:w-[420px] lg:w-[500px]
+                    object-contain
+                    drop-shadow-2xl
+                    animate-float3d
+                  "
+                />
+              </div>
+
+              {/* TEXTO */}
+              <div className="
+                  text-white 
+                  text-center md:text-left 
+                  max-w-xl
+                ">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                  TRAMPA BUCKET
+                </h2>
+
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4">
+                  Controla plagas sin dañar el ecosistema
+                </h3>
+
+                <p className="text-sm sm:text-base md:text-lg text-white/80 mb-4 md:mb-6">
+                  Sistema eficiente para monitorear y reducir la población de insectos en cultivos sin uso de químicos agresivos.
+                </p>
+
+                <ul className="text-white/70 space-y-1 md:space-y-2 text-sm md:text-base">
+                  <li>✔ Reduce la reproducción de plagas</li>
+                  <li>✔ Funciona en campo abierto y cerrado</li>
+                  <li>✔ Resistente al sol y la lluvia</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </SwiperSlide>
+
+      </Swiper>
     </section>
   );
 }
