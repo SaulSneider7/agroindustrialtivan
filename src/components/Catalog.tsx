@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faArrowLeft, faLeaf, faInfoCircle, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faArrowLeft, faLeaf, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { productsData } from '../data/products';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -136,16 +136,6 @@ export default function Catalog() {
                                 >
                                   <FontAwesomeIcon icon={faInfoCircle} /> Ver información
                                 </Link>
-                                {prod.fichaTecnica && (
-                                  <a 
-                                    href={prod.fichaTecnica}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full py-3 rounded-xl border border-brand-green/10 text-brand-dark/60 font-bold text-xs hover:bg-brand-light transition-all flex items-center justify-center gap-2"
-                                  >
-                                    <FontAwesomeIcon icon={faFilePdf} className="text-brand-green" /> Ficha Técnica
-                                  </a>
-                                )}
                               </div>
                             </div>
                           </motion.div>
