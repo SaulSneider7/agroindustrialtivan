@@ -80,13 +80,14 @@ export default function ProductDetail() {
     }
 
     try {
+      const baseUrl = import.meta.env.VITE_BASE_URL;
       // 1. Send email to the Customer
       const customerParams = {
         to_name: name,
         to_email: email,
         product_name: product.nombre,
         product_description: product.descripcion,
-        ficha_tecnica_url: product.fichaTecnica || 'https://agrotivan.com/catalogo',
+        ficha_tecnica_url: product.fichaTecnica ? `${baseUrl}${product.fichaTecnica}` : `${baseUrl}/catalogo`,
       };
 
       // 2. Send email to the Owner
