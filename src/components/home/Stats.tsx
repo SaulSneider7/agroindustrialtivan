@@ -1,22 +1,48 @@
-export default function Stats() {
-  const stats = [
-    { label: 'Años de Experiencia', value: '15+' },
-    { label: 'Clientes Satisfechos', value: '500+' },
-    { label: 'Productos Innovadores', value: '24' },
-    { label: 'Hectáreas Nutridas', value: '10k+' },
-  ];
-
+export default function CTASection() {
   return (
-    <section className="py-20 bg-brand-green text-white">
+    <section className="py-10 bg-brand-green text-white">
       <div className="max-w-[1440px] mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((stat, i) => (
-            <div key={i} data-aos="fade-up" data-aos-delay={i * 100}>
-              <div className="text-4xl font-bold text-brand-lime mb-2">{stat.value}</div>
-              <div className="text-sm text-white/70 uppercase tracking-wider">{stat.label}</div>
-            </div>
-          ))}
+        
+        <div className="grid md:grid-cols-3 gap-8 text-center items-center">
+          
+          {/* 1. FRASE */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Impulsa tu producción con soluciones agrícolas de alto rendimiento
+            </h2>
+            <p className="text-white/70">
+              Tecnología y experiencia para maximizar tus resultados en el campo.
+            </p>
+          </div>
+
+          {/* 2. VER PRODUCTOS */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">
+              Explora nuestros productos
+            </h3>
+            <a
+              href="#productos"
+              className="inline-block bg-brand-lime text-brand-dark font-bold px-6 py-3 rounded-xl hover:scale-105 transition"
+            >
+              Ver productos
+            </a>
+          </div>
+
+          {/* 3. SOLICITAR ASESORÍA */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">
+              ¿Necesitas asesoría personalizada?
+            </h3>
+            <a
+              href="#contacto"
+              className="inline-block border border-white px-6 py-3 rounded-xl hover:bg-white hover:text-brand-green transition"
+            >
+              Solicitar asesoría
+            </a>
+          </div>
+
         </div>
+
       </div>
     </section>
   );

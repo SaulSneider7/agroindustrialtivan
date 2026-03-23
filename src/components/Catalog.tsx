@@ -103,10 +103,10 @@ export default function Catalog() {
                 <div className="space-y-12">
                   {cat.subcategorias.map((sub, j) => (
                     <div key={j}>
-                      <h3 className="text-brand-green font-bold text-sm uppercase tracking-widest mb-8 flex items-center gap-4">
-                        <span className="h-px bg-brand-green/20 flex-1"></span>
+                      <h3 className="text-brand-green font-bold text-2xl uppercase tracking-widest mb-8 flex items-center gap-4">
+                        <span className="h-px bg-brand-green/20 flex-1 text-2xl"></span>
                         {sub.nombre}
-                        <span className="h-px bg-brand-green/20 flex-1"></span>
+                        <span className="h-px bg-brand-green/20 flex-1 text-2xl"></span>
                       </h3>
                       
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -128,7 +128,7 @@ export default function Catalog() {
                               </div>
                             </div>
                             <div className="p-6">
-                              <h4 className="text-brand-dark font-bold text-lg mb-4 line-clamp-1">{prod.nombre}</h4>
+                              <h4 className="text-center text-3xl text-brand-dark font-bold  mb-4 line-clamp-1">{prod.nombre}</h4>
                               <div className="flex flex-col gap-2">
                                 <Link 
                                   to={`/producto/${slugify(prod.nombre)}`}

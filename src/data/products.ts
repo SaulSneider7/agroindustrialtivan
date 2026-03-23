@@ -252,7 +252,7 @@ export const productsData: Category[] = [
           },
           { 
             id: "conetrap",
-            nombre: "Conetrap", 
+            nombre: "Trampa Conetrap", 
             imagen: "/conetrap.jpg", 
             descripcion: "La trampa CONETRAP, se trata de un mosquero de captura sobre distintas plagas, especialmente moscas, en función del atrayente que coloquemos en su interior. En muchos casos podemos utilizar el atrayente para la mosca del olivo o la mosca de la fruta.",
             fichaTecnica: "/fichas_tecnicas/trampas_entomologicas/trampa_para_mosca/conetrap.pdf"
@@ -299,21 +299,21 @@ export const productsData: Category[] = [
         "productos": [
           { 
             id: "picudo-algodonero",
-            nombre: "Picudo del algodonero", 
+            nombre: "Trampa picudo algodonero", 
             imagen: "/picudo_algodonero.png", 
             descripcion: "Trampas muy eficientes para atraer y detectar picudos en el cultivo  del  algodón. El insecto es atraído hacia la trampa tanto por la feromona como por el color verde de la misma.",
             fichaTecnica: "/fichas_tecnicas/trampas_entomologicas/otras_trampas/picudo_algodonero.pdf"
           },
           { 
             id: "funnel-barrera-arbol",
-            nombre: "Funnel barrera arbol", 
+            nombre: "Trampa funnel barrera arbol", 
             imagen: "/funnel_barrera_arbol.png", 
             descripcion: "Es un polillero polivalente indicado especialmente para el seguimiento de vuelo (monitoreo) y captura masiva de coleópteros pequeños como escolítidos. Pero también puede usarse para una gran variedad delepidópteros con la feromona apropiada.",
             fichaTecnica: "/fichas_tecnicas/trampas_entomologicas/otras_trampas/funnel_barrera_arbol.pdf"
           },
           { 
             id: "funnel-suelo",
-            nombre: "Funnel suelo", 
+            nombre: "Trampa funnel suelo", 
             imagen: "/funnel_suelo.jpg", 
             descripcion: "Polillero Funnel suelo es un polillero polivalente indicado especialmente para el seguimiento de vuelo (monitoreo) y captura masiva de una gran variedad de lepidópteros con la feromona apropiada.",
             fichaTecnica: "/fichas_tecnicas/trampas_entomologicas/otras_trampas/funnel_suelo.pdf"
@@ -327,7 +327,7 @@ export const productsData: Category[] = [
           },
           { 
             id: "dome-trap",
-            nombre: "Dome trap", 
+            nombre: "Trampa Dome trap", 
             imagen: "/dome_trap.png", 
             descripcion: "Dome Trap o trampa Domo, es una trampa para aplicación de feromonas para la atracción y monitoreo de escarabajos de productos almacenados. Trampa de caída de diseño especial para escarabajos que se arrastran en masa.",
             fichaTecnica: "/fichas_tecnicas/trampas_entomologicas/otras_trampas/dome_trap.pdf" 
@@ -579,7 +579,7 @@ export const productsData: Category[] = [
           },
           { 
             id: "canastilla-portaferomona",
-            nombre: "Canastilla portaferrormona", 
+            nombre: "Canastilla portaferomona", 
             imagen: "/canastilla_portaferomona.png", 
             descripcion: "La canastilla está fabricada en polipropileno de baja densidad flexible, tiene forma cónica, con aperturas, La canastilla plástica o portaferomona, está específicamente diseñada para contener una capsula de atrayente para la captura de moscas de la fruta.",
             fichaTecnica: "/fichas_tecnicas/accesorios/canastilla_portaferomona.pdf"

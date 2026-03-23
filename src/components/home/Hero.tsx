@@ -1,10 +1,20 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function HeroVideo() {
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStep((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 3000); // controla la duración de cada fase
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Video de fondo */}
+      
       <video
         autoPlay
         loop
@@ -15,45 +25,49 @@ export default function HeroVideo() {
         <source src="/hero_agroindustrial_tivan.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-black/60" />
 
-      {/* Glow decorativo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-green-500/10 blur-[140px] rounded-full" />
+      <div className="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-10 flex items-center">
+        <div className="w-full text-white">
 
-      {/* Contenido */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-10 flex items-center">
-        <div className="max-w-3xl text-white">
-          <p className="inline-flex items-center rounded-full border border-white/15 bg-white/10 backdrop-blur-md px-4 py-2 text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase mb-5">
-            Soluciones agrícolas de alto rendimiento
-          </p>
+          <AnimatePresence mode="wait">
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-5">
-            Nutriendo y protegiendo <br />
-            <span className="text-green-400">tus cultivos con resultados reales</span>
-          </h1>
+            {/* TEXTO 1 */}
+            {step === 0 && (
+              <motion.h1
+                key="title1"
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.8 }}
+                className="text-left text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[72px] font-extrabold leading-[1.1]"
+              >
+                Nutriendo y protegiendo <br />
+                <span className="text-green-400">
+                  tus cultivos
+                </span>
+              </motion.h1>
+            )}
 
-          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mb-8 leading-relaxed">
-            Tecnología, nutrición y protección agrícola para potenciar el desarrollo de tus cultivos,
-            mejorar su resistencia y maximizar la productividad en cada campaña.
-          </p>
+            {/* TEXTO 2 */}
+            {step === 1 && (
+              <motion.h1
+                key="title2"
+                initial={{ opacity: 0, y: 80 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 80 }}
+                transition={{ duration: 0.8 }}
+                className="text-left text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[72px] font-extrabold leading-[1.1]"
+              >
+                Impulsando la eficiencia <br />
+                <span className="text-green-400">
+                  en el campo
+                </span>
+              </motion.h1>
+            )}
 
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#productos"
-              className="inline-flex items-center gap-3 rounded-2xl bg-green-600 px-7 py-4 text-white font-semibold text-base md:text-lg hover:bg-green-700 transition-all"
-            >
-              Ver productos
-              <FontAwesomeIcon icon={faChevronRight} />
-            </a>
+          </AnimatePresence>
 
-            <a
-              href="#contacto"
-              className="inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-7 py-4 text-white font-semibold text-base md:text-lg hover:bg-white/15 transition-all"
-            >
-              Solicitar asesoría
-            </a>
-          </div>
         </div>
       </div>
     </section>

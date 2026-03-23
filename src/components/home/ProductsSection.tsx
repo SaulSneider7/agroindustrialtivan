@@ -34,7 +34,7 @@ export default function ProductsSection() {
       note: 'Control etológico avanzado.',
       icon: faEye,
       img: './trampa_multilure.png',
-      subs: ['Mosca de la fruta', 'Otras trampas para monitoreo']
+      subs: ['Trampa para Mosca de la fruta', 'Otras trampas para monitoreo']
     },
     {
       title: 'Atrayentes Alimenticios y Semioquímicos',

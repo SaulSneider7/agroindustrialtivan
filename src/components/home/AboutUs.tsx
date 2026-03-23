@@ -16,7 +16,7 @@ export default function AboutUs() {
           <div className="relative" data-aos="fade-right">
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-brand-green/5">
               <img
-                src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=1200"
+                src="/nuestra_esencia.jpeg"
                 alt="Agroindustrial Tivan - Aliados del campo"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
