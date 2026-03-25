@@ -82,7 +82,7 @@ export default function Navbar({ productCategories }: NavbarProps) {
 
           {/* Redes sociales */}
           <div className="flex gap-4 items-center">
-            <span className="text-white/40 text-[11px]">Síguenos:</span>
+            <span className="text-white text-[11px]">Síguenos:</span>
 
             <a href="https://www.facebook.com/Agroindustrialtivan" target="_blank" rel="noopener noreferrer" className="hover:text-brand-lime transition-colors">
               <FontAwesomeIcon icon={faFacebook} className="text-sm" />
